@@ -35,7 +35,16 @@
     <h1>Bienvenue</h1>
     <p>Vous êtes la <span id="numero">0</span>ème personne à avoir scanné le QR code.</p>
     <i class="validation-icon fas fa-check-circle"></i>
-
+    <script>
+        // Génération du QR code avec l'URL de redirection
+        var url = window.location+"/qr-scanned";
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: url,
+            width: 128,
+            height: 128
+        });
+        console.log(qrcode)
+    </script>
 
 </body>
 </html>
