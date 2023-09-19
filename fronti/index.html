@@ -3,6 +3,7 @@
 <head>
     <title>Compteur de personnes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/fronti/QRcode.js"></script>
 
     <style>
         body {
@@ -35,16 +36,27 @@
     <h1>Bienvenue</h1>
     <p>Vous êtes la <span id="numero">0</span>ème personne à avoir scanné le QR code.</p>
     <i class="validation-icon fas fa-check-circle"></i>
-    <script>
-        // Génération du QR code avec l'URL de redirection
-        var url = window.location+"/qr-scanned";
-        var qrcode = new QRCode(document.getElementById("qrcode"), {
-            text: url,
-            width: 128,
-            height: 128
-        });
-        console.log(qrcode)
-    </script>
+
+
+    <canvas id="canvas"></canvas>
+    <script src="bundle.js"></script>
+    <img style="width:200px;height:200px;" src="qr.svg">
+
+    
+
+  <script >
+
+    addEventListener('DOMContentLoaded',()=>{
+        const url = window.location.href + "/qr-scanned"; // Assurez-vous que /qr-scanned est votre URL de redirection
+    console.log(url);
+    QRCode.toCanvas(document.getElementById('canvas'),url, function (error) {
+    if (error) console.error(error)
+    console.log('success!');
+    })
+    // Génération du QR code avec l'URL de redirection
+
+  })
+</script>
 
 </body>
 </html>
